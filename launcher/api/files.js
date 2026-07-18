@@ -23,7 +23,8 @@ async function getFiles(){
                 },
                 params:{
                     t: Date.now()
-                }
+                },
+                timeout: 5000
             }
         );
 

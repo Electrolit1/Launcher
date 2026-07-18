@@ -182,11 +182,12 @@ if(data.success){
 
 
 
-
-
-
+    const statusContainer = document.getElementById("status-container");
+    if (statusContainer) {
+        statusContainer.className = "login-status success";
+    }
     status.textContent =
-    "✅ Acceso correcto";
+    "Acceso correcto";
 
 
 
@@ -213,8 +214,12 @@ if(data.success){
 else{
 
 
+    const statusContainer = document.getElementById("status-container");
+    if (statusContainer) {
+        statusContainer.className = "login-status error";
+    }
     status.textContent =
-    "❌ "+data.message;
+    data.message;
 
 
 }

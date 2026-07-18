@@ -1,395 +1,257 @@
-*{
+/* ================================================================
+   WANHEDA STUDIO — SPLASH SCREEN
+   Follows: style.css Design System v2
+   Flat matte dark · Inter · Crimson accent · Zero neon
+   ================================================================ */
 
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
+/* ── DESIGN TOKENS (mirrored from style.css) ──────────────────── */
+:root {
+  --bg-canvas:    #0B0C0E;
+  --bg-surface:   #0D0F12;
+  --bg-card:      #111418;
+  --bg-hover:     #16181C;
+  --bg-raised:    #1A1D22;
+
+  --border:       #22252A;
+  --border-focus: #2E3238;
+  --border-red:   #5C0000;
+
+  --red:          #8B0000;
+  --red-hover:    #A30000;
+  --red-scarlet:  #B22222;
+  --red-dim:      #5C0000;
+  --red-text:     #CC3333;
+  --red-ghost:    rgba(139,0,0,0.12);
+
+  --text-white:   #F0F2F5;
+  --text-primary: #C8CAD0;
+  --text-secondary:#888B90;
+  --text-muted:   #52565C;
+
+  --t-fast: 0.1s ease;
+  --t-mid:  0.18s ease;
 }
 
-
-
-body{
-
-
-width:100%;
-height:100vh;
-
-overflow:hidden;
-
-background:#050505;
-
-color:white;
-
-
+/* ── RESET ───────────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0; padding: 0;
+  box-sizing: border-box;
 }
 
-
-
-
-
-.background{
-
-
-position:absolute;
-
-width:100%;
-height:100%;
-
-
-background:
-
-radial-gradient(
-circle at center,
-rgba(120,0,255,.25),
-transparent 45%
-),
-
-linear-gradient(
-135deg,
-#050505,
-#100020,
-#050505
-);
-
-
-animation:
-backgroundMove 8s infinite alternate;
-
-
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-
-
-@keyframes backgroundMove{
-
-
-from{
-
-transform:scale(1);
-
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg-canvas);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  position: relative;
 }
 
-
-to{
-
-transform:scale(1.08);
-
+/* ── BACKGROUND ──────────────────────────────────────────────── */
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  /* Subtle dark vignette — no glowing orbs */
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(139,0,0,0.07), transparent),
+    var(--bg-canvas);
 }
 
-
+/* Noise texture overlay for depth */
+.background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255,255,255,0.007) 2px,
+      rgba(255,255,255,0.007) 4px
+    );
+  pointer-events: none;
 }
 
-
-
-
-
-
-.splash{
-
-
-position:relative;
-
-width:100%;
-height:100%;
-
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-
-align-items:center;
-
-
-z-index:2;
-
-
+/* ── SPLASH CONTAINER ────────────────────────────────────────── */
+.splash {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  animation: splashIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-
-
-
-
-
-
-.logo{
-
-
-text-align:center;
-
-
+/* ── LOGO MARK (brand mark like style.css) ──────────────────── */
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
 }
 
-
-
-.logo-image{
-
-
-width:130px;
-
-height:130px;
-
-object-fit:contain;
-
-
-filter:
-
-drop-shadow(
-0 0 25px
-rgba(150,0,255,.8)
-);
-
-
-animation:
-
-logoPulse 3s infinite;
-
-
+.logo-image {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  /* Subtle brightness tint — no glow */
+  filter: brightness(0.9) contrast(1.1);
+  margin-bottom: 24px;
+  animation: logoFloat 4s ease-in-out infinite;
 }
 
-
-
-
-@keyframes logoPulse{
-
-
-0%,100%{
-
-transform:scale(1);
-
+/* Brand name — exact same style as .brand-name in style.css */
+.logo h1 {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: var(--text-white);
+  line-height: 1;
 }
 
-
-50%{
-
-transform:scale(1.05);
-
+.logo h2 {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 6px;
 }
 
-
+/* Divider — same pattern as borders in style.css */
+.line {
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 28px auto 0;
 }
 
-
-
-
-
-
-.logo h1{
-
-
-margin-top:15px;
-
-
-font-size:48px;
-
-
-letter-spacing:8px;
-
-
-font-weight:900;
-
-
-background:
-
-linear-gradient(
-90deg,
-#ffffff,
-#b46cff,
-#ffffff
-);
-
-
--webkit-background-clip:text;
-
-color:transparent;
-
-
+/* ── LOADER ──────────────────────────────────────────────────── */
+.loader {
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
-
-
-
-.logo h2{
-
-
-font-size:25px;
-
-
-letter-spacing:15px;
-
-
-color:#b46cff;
-
-
-margin-top:5px;
-
-
+/* Thin spinner — matches loader-mini from style.css */
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--border);
+  border-top-color: var(--red-text);
+  border-radius: 50%;
+  animation: spin 0.85s linear infinite;
 }
 
-
-
-
-.line{
-
-
-height:2px;
-
-width:180px;
-
-
-margin:20px auto;
-
-
-background:
-
-linear-gradient(
-90deg,
-transparent,
-#9b4dff,
-transparent
-);
-
-
+/* ── STATUS TEXT ─────────────────────────────────────────────── */
+#status {
+  margin-top: 18px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  animation: statusPulse 2s ease-in-out infinite;
 }
 
-
-
-
-
-
-
-.loader{
-
-
-margin-top:25px;
-
-
+/* ── PROGRESS BAR (thin, same as .bar/.fill in style.css) ───── */
+.progress-wrap {
+  margin-top: 24px;
+  width: 180px;
 }
 
-
-
-
-.spinner{
-
-
-width:45px;
-
-height:45px;
-
-
-border-radius:50%;
-
-
-border:
-
-4px solid rgba(255,255,255,.15);
-
-
-border-top:
-
-4px solid #9b4dff;
-
-
-
-animation:
-
-spin 1s linear infinite;
-
-
+.progress-bar {
+  height: 2px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
 }
 
-
-
-
-@keyframes spin{
-
-
-to{
-
-transform:rotate(360deg);
-
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--red);
+  border-radius: 99px;
+  transition: width 0.4s ease;
+  animation: progressAnim 2.5s ease-in-out infinite;
 }
 
-
+/* ── BOTTOM FOOTER (matches .strip-label style) ─────────────── */
+.bottom {
+  position: fixed;
+  bottom: 20px;
+  left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  z-index: 3;
 }
 
-
-
-
-
-
-
-#status{
-
-
-margin-top:25px;
-
-
-font-size:15px;
-
-
-color:#bdbdbd;
-
-
-animation:
-
-fade 2s infinite;
-
-
+.bottom span {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
 }
 
+/* ── CORNER MARKS (subtle branding accents) ──────────────────── */
+.corner {
+  position: fixed;
+  width: 16px;
+  height: 16px;
+  z-index: 3;
+}
+.corner--tl { top: 16px; left: 16px;
+  border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
+.corner--tr { top: 16px; right: 16px;
+  border-top: 1px solid var(--border); border-right: 1px solid var(--border); }
+.corner--bl { bottom: 36px; left: 16px;
+  border-bottom: 1px solid var(--border); border-left: 1px solid var(--border); }
+.corner--br { bottom: 36px; right: 16px;
+  border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
 
-
-
-@keyframes fade{
-
-
-50%{
-
-opacity:.5;
-
+/* ── ANIMATIONS ──────────────────────────────────────────────── */
+@keyframes splashIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
 }
 
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.45; }
+}
 
-
-
-
-
-.bottom{
-
-
-position:absolute;
-
-
-bottom:25px;
-
-
-display:flex;
-
-
-flex-direction:column;
-
-
-align-items:center;
-
-
-gap:5px;
-
-
-font-size:12px;
-
-
-color:#777;
-
-
-letter-spacing:2px;
-
-
+@keyframes progressAnim {
+  0%   { width: 0%;   opacity: 1; }
+  60%  { width: 85%;  opacity: 1; }
+  85%  { width: 100%; opacity: 1; }
+  100% { width: 100%; opacity: 0; }
 }

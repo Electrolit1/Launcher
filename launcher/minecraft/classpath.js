@@ -129,7 +129,7 @@ async function buildClasspath(){
 
     const MC_VERSION =
 
-    remote.minecraftVersion
+    remote?.minecraftVersion
     ||
     "1.21.1";
 
@@ -139,7 +139,7 @@ async function buildClasspath(){
 
     const FABRIC_VERSION =
 
-    remote.fabricLoader
+    remote?.fabricLoader
     ||
     "0.17.0";
 
