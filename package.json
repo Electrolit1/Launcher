@@ -1,0 +1,106 @@
+{
+  "name": "wanhedalauncher",
+  "version": "1.0.1",
+  "description": "Launcher oficial de Wanheda Studio",
+  "main": "main.js",
+
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "dist": "electron-builder --win",
+    "clean": "rimraf dist"
+  },
+
+  "keywords": [
+    "minecraft",
+    "launcher",
+    "fabric",
+    "modpack",
+    "wanheda"
+  ],
+
+  "author": "Wanheda Studio",
+  "license": "ISC",
+  "type": "commonjs",
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Electrolit1/Wanheda-Launcher"
+  },
+
+  "dependencies": {
+    "adm-zip": "^0.6.0",
+    "axios": "^1.18.1",
+    "electron-store": "^11.0.2",
+    "extract-zip": "^2.0.1",
+    "minecraft-launcher-core": "^3.18.2"
+  },
+
+  "devDependencies": {
+    "electron": "^43.1.1",
+    "electron-builder": "^26.15.3",
+    "electron-reload": "^2.0.0-alpha.1",
+    "rimraf": "^6.0.1"
+  },
+
+  "build": {
+
+    "appId": "com.wanheda.studio.launcher",
+
+    "productName": "Wanheda Studio Launcher",
+
+    "directories": {
+      "output": "dist"
+    },
+
+    "files": [
+      "**/*",
+      "!dist",
+      "!wanheda-update"
+    ],
+
+    "asar": true,
+
+    "asarUnpack": [
+      "node_modules/adm-zip/**/*",
+      "node_modules/minecraft-launcher-core/**/*"
+    ],
+
+    "icon": "assets/icon.ico",
+
+    "win": {
+
+      "icon": "assets/icon.ico",
+
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+
+      "artifactName": "WanhedaStudio-${version}.exe"
+    },
+
+    "nsis": {
+
+      "oneClick": false,
+
+      "perMachine": false,
+
+      "allowToChangeInstallationDirectory": true,
+
+      "createDesktopShortcut": true,
+
+      "createStartMenuShortcut": true,
+
+      "shortcutName": "Wanheda Studio",
+
+      "deleteAppDataOnUninstall": false
+
+    }
+
+  }
+}

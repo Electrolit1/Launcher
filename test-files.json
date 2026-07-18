@@ -1,0 +1,32 @@
+{
+    "minecraftVersion": "1.21.1",
+
+    "fabricLoader": "0.16.10",
+
+    "modpackVersion": "1.0.0",
+
+    "files": [
+
+        {
+            "name": "fabric-api.jar",
+            "type": "mod",
+            "url": ""
+        },
+
+        {
+            "name": "aliemod.jar",
+            "type": "mod",
+            "url": ""
+        }
+
+    ],
+
+
+    "resourcepack": {
+
+        "name": "WanhedaResourcepack.zip",
+        "url": ""
+
+    }
+
+}

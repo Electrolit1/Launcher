@@ -1,0 +1,468 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+body{
+
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#050505;
+
+    color:white;
+
+}
+
+
+/* ===========================
+        Fondo
+=========================== */
+
+.background{
+
+    position:fixed;
+    inset:0;
+
+    background:
+
+    radial-gradient(circle at 20% 20%,rgba(255,0,0,.22),transparent 28%),
+
+    radial-gradient(circle at 80% 80%,rgba(180,0,0,.18),transparent 30%),
+
+    radial-gradient(circle at center,#500000,#050505 72%);
+
+    animation:bgMove 18s ease-in-out infinite;
+
+}
+
+.background::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+
+    rgba(0,0,0,.15),
+
+    rgba(0,0,0,.75)
+
+    );
+
+}
+
+
+/* ===========================
+        Layout
+=========================== */
+
+.login-container{
+
+    position:relative;
+
+    width:1050px;
+
+    max-width:92%;
+
+    height:620px;
+
+    display:flex;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    backdrop-filter:blur(18px);
+
+    background:
+
+    rgba(10,10,10,.70);
+
+    border:
+
+    1px solid rgba(255,0,0,.18);
+
+    box-shadow:
+
+    0 0 60px rgba(255,0,0,.15);
+
+}
+
+
+/* ===========================
+        Panel izquierdo
+=========================== */
+
+.left{
+
+    width:45%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:60px;
+
+    background:
+
+    linear-gradient(
+
+    rgba(255,0,0,.05),
+
+    transparent
+
+    );
+
+}
+
+.logo{
+
+    width:190px;
+
+    margin-bottom:25px;
+
+    filter:
+
+    drop-shadow(0 0 25px rgba(255,0,0,.65));
+
+    animation:logoFloat 5s ease-in-out infinite;
+
+}
+
+.left h1{
+
+    color:#ff2020;
+
+    font-size:60px;
+
+    letter-spacing:10px;
+
+    text-shadow:
+
+    0 0 20px rgba(255,0,0,.55);
+
+}
+
+.left h2{
+
+    margin-top:5px;
+
+    letter-spacing:16px;
+
+    font-weight:300;
+
+    color:#d8d8d8;
+
+}
+
+.description{
+
+    margin-top:25px;
+
+    color:#9f9f9f;
+
+    text-align:center;
+
+    line-height:28px;
+
+}
+
+
+/* ===========================
+        Panel derecho
+=========================== */
+
+.right{
+
+    width:55%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:60px;
+
+}
+
+.login-box{
+
+    width:100%;
+
+    max-width:420px;
+
+    padding:40px;
+
+    border-radius:20px;
+
+    background:
+
+    rgba(0,0,0,.45);
+
+    border:
+
+    1px solid rgba(255,0,0,.20);
+
+    backdrop-filter:blur(15px);
+
+}
+
+.login-header{
+
+    margin-bottom:30px;
+
+}
+
+.login-header h3{
+
+    font-size:30px;
+
+    color:#ff2d2d;
+
+}
+
+.login-header p{
+
+    margin-top:8px;
+
+    color:#888;
+
+    line-height:24px;
+
+}
+
+
+/* ===========================
+        Inputs
+=========================== */
+
+input{
+
+    width:100%;
+
+    padding:16px;
+
+    margin-bottom:15px;
+
+    border-radius:12px;
+
+    border:
+
+    1px solid rgba(255,0,0,.18);
+
+    background:
+
+    rgba(20,20,20,.85);
+
+    color:white;
+
+    outline:none;
+
+    transition:.25s;
+
+    font-size:15px;
+
+}
+
+input::placeholder{
+
+    color:#666;
+
+}
+
+input:focus{
+
+    border-color:#ff2d2d;
+
+    box-shadow:
+
+    0 0 18px rgba(255,0,0,.35);
+
+}
+
+
+/* ===========================
+        Botón
+=========================== */
+
+button{
+
+    width:100%;
+
+    margin-top:10px;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    background:
+
+    linear-gradient(
+
+    90deg,
+
+    #8b0000,
+
+    #e10000
+
+    );
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+
+    0 0 25px rgba(255,0,0,.45);
+
+}
+
+button:active{
+
+    transform:scale(.98);
+
+}
+
+
+/* ===========================
+        Estado
+=========================== */
+
+.login-status{
+
+    margin-top:25px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.status-dot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#2cff55;
+
+    box-shadow:
+
+    0 0 12px #2cff55;
+
+}
+
+#status{
+
+    color:#aaaaaa;
+
+    font-size:14px;
+
+}
+
+
+/* ===========================
+        Footer
+=========================== */
+
+.footer{
+
+    position:absolute;
+
+    left:0;
+
+    right:0;
+
+    bottom:18px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:0 40px;
+
+    color:#666;
+
+    font-size:13px;
+
+}
+
+
+/* ===========================
+        Animaciones
+=========================== */
+
+@keyframes logoFloat{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+}
+
+@keyframes bgMove{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.05);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}

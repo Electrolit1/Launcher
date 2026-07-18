@@ -1,0 +1,29 @@
+# Dependencias
+node_modules/
+
+# Build y distribución
+/dist/
+dist/
+build/
+wanheda-update/
+
+# Archivos de ejecución y descarga
+downloads/
+logs/
+*.log
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Configuración local
+.env
+.env.local
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Archivos temporales
+*.tmp
+*.temp
