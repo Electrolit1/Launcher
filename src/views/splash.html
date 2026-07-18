@@ -2,113 +2,65 @@
 <html lang="es">
 
 <head>
-
-<meta charset="UTF-8">
-
-<title>
-Wanheda Studio
-</title>
-
-
-<link rel="stylesheet" href="../css/splash.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wanheda Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/splash.css">
 </head>
-
-
 
 <body>
 
+  <!-- Background layer -->
+  <div class="background"></div>
 
-<div class="background"></div>
+  <!-- Corner marks -->
+  <div class="corner corner--tl"></div>
+  <div class="corner corner--tr"></div>
+  <div class="corner corner--bl"></div>
+  <div class="corner corner--br"></div>
 
+  <!-- Splash Content -->
+  <div class="splash">
 
-
-<div class="splash">
-
-
-
+    <!-- Brand logo & name -->
     <div class="logo">
-
-
-
-        <img
-            src="../../assets/images/wanheda-logo.png"
-            class="logo-image"
-            alt="Wanheda Studio"
-        >
-
-
-
-        <h1>
-            WANHEDA
-        </h1>
-
-
-
-        <h2>
-            STUDIO
-        </h2>
-
-
-
-        <div class="line"></div>
-
-
+      <img
+        src="../../assets/images/wanheda-logo.png"
+        class="logo-image"
+        alt="Wanheda Studio"
+      >
+      <h1>WANHEDA</h1>
+      <h2>STUDIO</h2>
+      <div class="line"></div>
     </div>
 
-
-
-
-
+    <!-- Spinner loader -->
     <div class="loader">
-
-
-        <div class="spinner">
-
-
-        </div>
-
-
+      <div class="spinner"></div>
     </div>
 
+    <!-- Status label -->
+    <p id="status">Iniciando sistema...</p>
 
-
-
-
-
-    <p id="status">
-        Iniciando sistema...
-    </p>
-
-
-
-
-
-    <div class="bottom">
-
-
-        <span>
-            WANHEDA STUDIO LAUNCHER
-        </span>
-
-
-        <span>
-            v1.0.0
-        </span>
-
-
+    <!-- Thin progress bar -->
+    <div class="progress-wrap">
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
     </div>
 
+  </div>
 
+  <!-- Footer strip -->
+  <div class="bottom">
+    <span>WANHEDA STUDIO LAUNCHER</span>
+    <span>v1.0.0</span>
+  </div>
 
-</div>
-
-
-
-
-
-<script src="../js/splash.js"></script>
-
+  <script src="../js/splash.js"></script>
 
 </body>
 

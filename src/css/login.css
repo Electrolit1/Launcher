@@ -1,468 +1,419 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:"Segoe UI",Arial,sans-serif;
+/* ================================================================
+   WANHEDA STUDIO — LOGIN SCREEN
+   Follows: style.css Design System v2
+   Flat matte dark · Inter · Crimson accent · Zero neon
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ── DESIGN TOKENS ───────────────────────────────────────────── */
+:root {
+  --bg-canvas:    #0B0C0E;
+  --bg-surface:   #0D0F12;
+  --bg-card:      #111418;
+  --bg-hover:     #16181C;
+  --bg-active:    #1C1F24;
+  --bg-raised:    #1A1D22;
+
+  --border:       #22252A;
+  --border-focus: #2E3238;
+  --border-red:   #5C0000;
+
+  --red:          #8B0000;
+  --red-hover:    #A30000;
+  --red-active:   #720000;
+  --red-scarlet:  #B22222;
+  --red-dim:      #5C0000;
+  --red-text:     #CC3333;
+  --red-ghost:    rgba(139,0,0,0.12);
+
+  --text-white:   #F0F2F5;
+  --text-primary: #C8CAD0;
+  --text-secondary:#888B90;
+  --text-muted:   #52565C;
+  --text-disabled:#3A3D42;
+
+  --green-dot:    #2D6B2D;
+  --green-on:     #5EAD5E;
+
+  --t-fast: 0.1s ease;
+  --t-mid:  0.18s ease;
 }
 
-body{
-
-    width:100vw;
-    height:100vh;
-    overflow:hidden;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    background:#050505;
-
-    color:white;
-
+/* ── RESET ───────────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0; padding: 0;
+  box-sizing: border-box;
 }
 
-
-/* ===========================
-        Fondo
-=========================== */
-
-.background{
-
-    position:fixed;
-    inset:0;
-
-    background:
-
-    radial-gradient(circle at 20% 20%,rgba(255,0,0,.22),transparent 28%),
-
-    radial-gradient(circle at 80% 80%,rgba(180,0,0,.18),transparent 30%),
-
-    radial-gradient(circle at center,#500000,#050505 72%);
-
-    animation:bgMove 18s ease-in-out infinite;
-
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.background::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-
-    linear-gradient(
-
-    rgba(0,0,0,.15),
-
-    rgba(0,0,0,.75)
-
-    );
-
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg-canvas);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  position: relative;
 }
 
-
-/* ===========================
-        Layout
-=========================== */
-
-.login-container{
-
-    position:relative;
-
-    width:1050px;
-
-    max-width:92%;
-
-    height:620px;
-
-    display:flex;
-
-    border-radius:28px;
-
-    overflow:hidden;
-
-    backdrop-filter:blur(18px);
-
-    background:
-
-    rgba(10,10,10,.70);
-
-    border:
-
-    1px solid rgba(255,0,0,.18);
-
-    box-shadow:
-
-    0 0 60px rgba(255,0,0,.15);
-
+/* ── TITLEBAR (matches style.css .titlebar exactly) ──────────── */
+.titlebar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 42px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 200;
+  -webkit-app-region: drag;
 }
 
-
-/* ===========================
-        Panel izquierdo
-=========================== */
-
-.left{
-
-    width:45%;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:60px;
-
-    background:
-
-    linear-gradient(
-
-    rgba(255,0,0,.05),
-
-    transparent
-
-    );
-
+.titlebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 0 0 14px;
+  height: 100%;
+  -webkit-app-region: drag;
 }
 
-.logo{
-
-    width:190px;
-
-    margin-bottom:25px;
-
-    filter:
-
-    drop-shadow(0 0 25px rgba(255,0,0,.65));
-
-    animation:logoFloat 5s ease-in-out infinite;
-
+.brand-mark {
+  width: 24px; height: 24px;
+  background: var(--red);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 900;
+  color: #fff;
+  flex-shrink: 0;
+  user-select: none;
 }
 
-.left h1{
-
-    color:#ff2020;
-
-    font-size:60px;
-
-    letter-spacing:10px;
-
-    text-shadow:
-
-    0 0 20px rgba(255,0,0,.55);
-
+.brand-name {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: var(--text-white);
+  text-transform: uppercase;
+  user-select: none;
 }
 
-.left h2{
-
-    margin-top:5px;
-
-    letter-spacing:16px;
-
-    font-weight:300;
-
-    color:#d8d8d8;
-
+.brand-studio {
+  font-weight: 400;
+  color: var(--text-muted);
 }
 
-.description{
-
-    margin-top:25px;
-
-    color:#9f9f9f;
-
-    text-align:center;
-
-    line-height:28px;
-
+/* Window controls */
+.window-controls {
+  display: flex;
+  height: 100%;
+  -webkit-app-region: no-drag;
 }
 
+.wc-btn {
+  width: 46px;
+  height: 42px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background var(--t-fast), color var(--t-fast);
+  display: flex; align-items: center; justify-content: center;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+.wc-btn:hover  { background: var(--bg-hover);    color: var(--text-primary); }
+.wc-btn:active { background: var(--bg-active);   color: var(--text-white); }
+.wc-close:hover  { background: var(--red);       color: #fff; }
+.wc-close:active { background: var(--red-active);color: #fff; }
 
-/* ===========================
-        Panel derecho
-=========================== */
-
-.right{
-
-    width:55%;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:60px;
-
+/* ── BACKGROUND ──────────────────────────────────────────────── */
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 30% 60%, rgba(139,0,0,0.06), transparent),
+    radial-gradient(ellipse 50% 40% at 75% 35%, rgba(139,0,0,0.04), transparent),
+    var(--bg-canvas);
 }
 
-.login-box{
-
-    width:100%;
-
-    max-width:420px;
-
-    padding:40px;
-
-    border-radius:20px;
-
-    background:
-
-    rgba(0,0,0,.45);
-
-    border:
-
-    1px solid rgba(255,0,0,.20);
-
-    backdrop-filter:blur(15px);
-
+/* ── MAIN LAYOUT ─────────────────────────────────────────────── */
+.login-container {
+  position: relative;
+  z-index: 2;
+  width: 900px;
+  max-width: 94vw;
+  height: 540px;
+  max-height: calc(100vh - 90px);
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  animation: loginIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.login-header{
-
-    margin-bottom:30px;
-
+/* ── LEFT PANEL ──────────────────────────────────────────────── */
+.left {
+  width: 42%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 40px;
+  background: var(--bg-card);
+  border-right: 1px solid var(--border);
+  text-align: center;
+  flex-shrink: 0;
 }
 
-.login-header h3{
-
-    font-size:30px;
-
-    color:#ff2d2d;
-
+.logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 24px;
+  filter: brightness(0.92) contrast(1.05);
+  animation: logoFloat 4s ease-in-out infinite;
 }
 
-.login-header p{
-
-    margin-top:8px;
-
-    color:#888;
-
-    line-height:24px;
-
+/* Brand mark (large) */
+.left-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
 }
 
-
-/* ===========================
-        Inputs
-=========================== */
-
-input{
-
-    width:100%;
-
-    padding:16px;
-
-    margin-bottom:15px;
-
-    border-radius:12px;
-
-    border:
-
-    1px solid rgba(255,0,0,.18);
-
-    background:
-
-    rgba(20,20,20,.85);
-
-    color:white;
-
-    outline:none;
-
-    transition:.25s;
-
-    font-size:15px;
-
+.left h1 {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  color: var(--text-white);
+  line-height: 1;
 }
 
-input::placeholder{
-
-    color:#666;
-
+.left h2 {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 5px;
 }
 
-input:focus{
-
-    border-color:#ff2d2d;
-
-    box-shadow:
-
-    0 0 18px rgba(255,0,0,.35);
-
+/* Divider */
+.left-divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 24px auto;
 }
 
-
-/* ===========================
-        Botón
-=========================== */
-
-button{
-
-    width:100%;
-
-    margin-top:10px;
-
-    padding:16px;
-
-    border:none;
-
-    border-radius:12px;
-
-    cursor:pointer;
-
-    color:white;
-
-    font-size:15px;
-
-    font-weight:700;
-
-    letter-spacing:2px;
-
-    background:
-
-    linear-gradient(
-
-    90deg,
-
-    #8b0000,
-
-    #e10000
-
-    );
-
-    transition:.25s;
-
+.description {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.8;
+  letter-spacing: 0.3px;
 }
 
-button:hover{
-
-    transform:translateY(-2px);
-
-    box-shadow:
-
-    0 0 25px rgba(255,0,0,.45);
-
+/* ── RIGHT PANEL ─────────────────────────────────────────────── */
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 44px;
+  background: var(--bg-surface);
 }
 
-button:active{
-
-    transform:scale(.98);
-
+.login-box {
+  width: 100%;
+  max-width: 340px;
 }
 
-
-/* ===========================
-        Estado
-=========================== */
-
-.login-status{
-
-    margin-top:25px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
+/* Header */
+.login-header {
+  margin-bottom: 32px;
 }
 
-.status-dot{
-
-    width:10px;
-
-    height:10px;
-
-    border-radius:50%;
-
-    background:#2cff55;
-
-    box-shadow:
-
-    0 0 12px #2cff55;
-
+.login-header h3 {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--text-white);
+  text-transform: uppercase;
 }
 
-#status{
-
-    color:#aaaaaa;
-
-    font-size:14px;
-
+.login-header p {
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.7;
 }
 
+/* ── FORM SECTION TAG ────────────────────────────────────────── */
+.form-label {
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  margin-top: 16px;
+}
+.form-label:first-child { margin-top: 0; }
 
-/* ===========================
-        Footer
-=========================== */
-
-.footer{
-
-    position:absolute;
-
-    left:0;
-
-    right:0;
-
-    bottom:18px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    padding:0 40px;
-
-    color:#666;
-
-    font-size:13px;
-
+/* ── INPUTS ──────────────────────────────────────────────────── */
+#login-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
-
-/* ===========================
-        Animaciones
-=========================== */
-
-@keyframes logoFloat{
-
-    0%,100%{
-
-        transform:translateY(0);
-
-    }
-
-    50%{
-
-        transform:translateY(-8px);
-
-    }
-
+input {
+  width: 100%;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-white);
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  outline: none;
+  transition:
+    border-color var(--t-mid),
+    background var(--t-fast);
+  margin-bottom: 10px;
 }
 
-@keyframes bgMove{
+input::placeholder {
+  color: var(--text-disabled);
+  font-weight: 400;
+}
 
-    0%{
+input:hover {
+  border-color: var(--border-focus);
+  background: var(--bg-hover);
+}
 
-        transform:scale(1);
+input:focus {
+  border-color: var(--red-dim);
+  background: var(--bg-hover);
+}
 
-    }
+/* ── LOGIN BUTTON (matches .btn-play from style.css) ─────────── */
+#login {
+  width: 100%;
+  height: 40px;
+  margin-top: 6px;
+  border: none;
+  border-radius: 6px;
+  background: var(--red);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: background var(--t-fast), transform 0.08s ease;
+}
 
-    50%{
+#login:hover  { background: var(--red-hover); }
+#login:active { background: var(--red-active); transform: scale(0.99); }
+#login:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: var(--red);
+  transform: none;
+}
 
-        transform:scale(1.05);
+/* ── STATUS (matches .status-strip from style.css) ───────────── */
+.login-status {
+  margin-top: 20px;
+  padding: 8px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color var(--t-mid);
+}
 
-    }
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--green-dot);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
 
-    100%{
+#status {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
-        transform:scale(1);
+/* Status error state */
+.login-status.error { border-color: var(--border-red); }
+.login-status.error .status-dot { background: var(--red-text); }
+.login-status.error #status { color: var(--red-text); }
 
-    }
+/* Status success state */
+.login-status.success .status-dot { background: var(--green-on); }
+.login-status.success #status { color: var(--green-on); }
 
+/* ── FOOTER (matches .strip-label style) ─────────────────────── */
+.footer {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 36px;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 18px;
+  z-index: 100;
+}
+
+.footer span {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ── ANIMATIONS ──────────────────────────────────────────────── */
+@keyframes loginIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
 }

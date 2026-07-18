@@ -2,134 +2,106 @@
 <html lang="es">
 
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Wanheda Studio</title>
-
-    <link rel="stylesheet" href="../css/login.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión — Wanheda Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/login.css">
 </head>
 
 <body>
 
-<div class="background"></div>
+  <!-- ══════════════════════════════════════════
+       TITLEBAR  —  42px (Mismo diseño de index.html)
+  ══════════════════════════════════════════ -->
+  <header class="titlebar">
+    <div class="titlebar-brand drag">
+      <div class="brand-mark">W</div>
+      <span class="brand-name">WANHEDA <span class="brand-studio">STUDIO</span></span>
+    </div>
+    <div class="window-controls">
+      <button id="minimize" class="wc-btn" title="Minimizar">─</button>
+      <button id="maximize" class="wc-btn" title="Maximizar">□</button>
+      <button id="close" class="wc-btn wc-close" title="Cerrar">✕</button>
+    </div>
+  </header>
 
-<div class="login-container">
+  <!-- Background layer -->
+  <div class="background"></div>
 
+  <!-- Login Container -->
+  <div class="login-container">
+
+    <!-- Left Branding Card -->
     <div class="left">
-
-        <img
-            class="logo"
-            src="../../assets/images/wanheda-logo.png"
-            alt="Wanheda Studio">
-
-        <h1>
-
-            WANHEDA
-
-        </h1>
-
-        <h2>
-
-            STUDIO
-
-        </h2>
-
-        <p class="description">
-
-            Launcher oficial de Wanheda Studio
-
-        </p>
-
+      <img class="logo" src="../../assets/images/wanheda-logo.png" alt="Wanheda Studio logo">
+      <div class="left-brand">
+        <h1>WANHEDA</h1>
+        <h2>STUDIO</h2>
+      </div>
+      <div class="left-divider"></div>
+      <p class="description">
+        Launcher oficial de Wanheda Studio.<br>
+        Acceso exclusivo para miembros y jugadores del servidor de comunidad.
+      </p>
     </div>
 
-
-
+    <!-- Right Login Box -->
     <div class="right">
-
-        <div class="login-box">
-
-            <div class="login-header">
-
-                <h3>
-
-                    Iniciar sesión
-
-                </h3>
-
-                <p>
-
-                    Ingresa con la cuenta creada por el administrador.
-
-                </p>
-
-            </div>
-
-
-
-            <div id="login-panel">
-
-                <input
-                    id="nick"
-                    autocomplete="off"
-                    placeholder="Nick de Minecraft">
-
-                <input
-                    id="password"
-                    type="password"
-                    placeholder="Contraseña">
-
-                <button id="login">
-
-                    ACCEDER
-
-                </button>
-
-            </div>
-
-
-
-            <div class="login-status">
-
-                <span class="status-dot"></span>
-
-                <p id="status">
-
-                    Esperando acceso...
-
-                </p>
-
-            </div>
-
+      <div class="login-box">
+        <div class="login-header">
+          <h3>Iniciar Sesión</h3>
+          <p>Ingresa con las credenciales que te ha asignado el administrador.</p>
         </div>
 
+        <div id="login-panel">
+          <label class="form-label" for="nick">NICKNAME</label>
+          <input
+            id="nick"
+            autocomplete="off"
+            placeholder="Nick de Minecraft"
+            type="text"
+          >
+
+          <label class="form-label" for="password">CONTRASEÑA</label>
+          <input
+            id="password"
+            type="password"
+            placeholder="••••••••••••"
+          >
+
+          <button id="login">ACCEDER</button>
+        </div>
+
+        <div class="login-status" id="status-container">
+          <span class="status-dot"></span>
+          <p id="status">Esperando acceso...</p>
+        </div>
+      </div>
     </div>
 
-</div>
+  </div>
 
+  <!-- ══════════════════════════════════════════
+       BOTTOM FOOTER  —  36px
+  ══════════════════════════════════════════ -->
+  <footer class="footer">
+    <span>WANHEDA STUDIO LAUNCHER</span>
+    <span>v1.0.0</span>
+  </footer>
 
+  <script src="../js/login.js"></script>
 
-<div class="footer">
-
-    <span>
-
-        Wanheda Studio Launcher
-
-    </span>
-
-    <span>
-
-        v1.0.0
-
-    </span>
-
-</div>
-
-<script src="../js/login.js"></script>
+  <!-- Controladores básicos para la titlebar del login en local si fuese necesario -->
+  <script>
+    if (window.launcher) {
+      document.getElementById('minimize')?.addEventListener('click', () => launcher.minimize());
+      document.getElementById('maximize')?.addEventListener('click', () => launcher.maximize());
+      document.getElementById('close')?.addEventListener('click', () => launcher.close());
+    }
+  </script>
 
 </body>
 

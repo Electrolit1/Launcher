@@ -25,7 +25,8 @@ async function getVersionConfig(){
 
         const response =
         await fetch(
-            "https://raw.githubusercontent.com/Electrolit1/Wanheda-Launcher-Updates/main/version.json"
+            "https://raw.githubusercontent.com/Electrolit1/Wanheda-Launcher-Updates/main/version.json",
+            { signal: AbortSignal.timeout(5000) }
         );
 
 
